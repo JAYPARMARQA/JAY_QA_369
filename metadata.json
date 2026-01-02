@@ -1,0 +1,8 @@
+{
+  "name": "Jay's Automation Excellence Hub",
+  "description": "A high-end, multi-page web application designed specifically for automation engineers to practice locators, XPaths, and complex web interactions with real-time data and AI-generated scenarios.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
