@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { TableRow } from '../types';
+import Tooltip from '../components/Tooltip';
 
 const TablePractice: React.FC = () => {
   const initialData: TableRow[] = [
@@ -33,14 +34,16 @@ const TablePractice: React.FC = () => {
         <div className="relative group w-full md:w-auto">
           <div className="absolute inset-0 bg-emerald-500/20 blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity"></div>
           <i className="fa-solid fa-search absolute left-5 top-1/2 -translate-y-1/2 text-emerald-500 group-focus-within:text-white transition-colors z-10"></i>
-          <input 
-            type="text" 
-            placeholder="Search Protocol..." 
-            className="pl-14 pr-8 py-5 rounded-2xl border-2 border-slate-800 outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 w-full md:w-96 shadow-2xl font-black text-[10px] uppercase tracking-[0.2em] text-white bg-slate-950 relative z-10"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            id="table-search"
-          />
+          <Tooltip content="Practice: Filter the table and verify row count changes." position="top">
+            <input 
+              type="text" 
+              placeholder="Search Protocol..." 
+              className="pl-14 pr-8 py-5 rounded-2xl border-2 border-slate-800 outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 w-full md:w-96 shadow-2xl font-black text-[10px] uppercase tracking-[0.2em] text-white bg-slate-950 relative z-10"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              id="table-search"
+            />
+          </Tooltip>
         </div>
       </div>
 
@@ -88,14 +91,16 @@ const TablePractice: React.FC = () => {
                     </span>
                   </td>
                   <td className="px-10 py-8 text-right">
-                    <button 
-                      onClick={() => deleteRow(row.id)}
-                      className="text-slate-700 hover:text-rose-500 transition-all p-3 rounded-2xl hover:bg-rose-500/10 hover:shadow-[0_0_15px_rgba(244,63,94,0.3)]"
-                      title="Decommission Node"
-                      id={`delete-user-${row.id}`}
-                    >
-                      <i className="fa-solid fa-power-off text-lg"></i>
-                    </button>
+                    <Tooltip content="Practice: Row-based deletion automation." position="left">
+                      <button 
+                        onClick={() => deleteRow(row.id)}
+                        className="text-slate-700 hover:text-rose-500 transition-all p-3 rounded-2xl hover:bg-rose-500/10 hover:shadow-[0_0_15px_rgba(244,63,94,0.3)]"
+                        title="Decommission Node"
+                        id={`delete-user-${row.id}`}
+                      >
+                        <i className="fa-solid fa-power-off text-lg"></i>
+                      </button>
+                    </Tooltip>
                   </td>
                 </tr>
               ))}

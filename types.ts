@@ -21,3 +21,9 @@ export interface AICase {
   htmlSnippet: string;
   targetXPath: string;
 }
+
+export interface SandboxState {
+  currentChallenge: AICase | null;
+  totalChallengesGenerated: number;
+  completedChallenges: string[]; // IDs or titles of completed tasks
+}

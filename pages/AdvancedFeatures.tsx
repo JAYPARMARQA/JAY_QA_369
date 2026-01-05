@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import Tooltip from '../components/Tooltip';
 
 const AdvancedFeatures: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,13 +29,15 @@ const AdvancedFeatures: React.FC = () => {
         <h3 className="text-2xl font-black mb-6 text-white uppercase tracking-tight">1. Overlay Interception</h3>
         <p className="text-slate-400 mb-10 font-medium leading-relaxed max-w-2xl">Practice handling <code className="text-rose-400 bg-rose-500/10 px-1 rounded">ElementClickInterceptedException</code>. You must verify visibility before interaction.</p>
         
-        <button 
-          id="open-modal-btn"
-          onClick={() => setModalOpen(true)}
-          className="bg-gradient-to-r from-rose-600 to-indigo-700 text-white px-10 py-5 rounded-[1.5rem] font-black uppercase text-xs tracking-widest shadow-2xl hover:scale-105 transition-all shadow-rose-950/20"
-        >
-          Inject Practice Modal
-        </button>
+        <Tooltip content="Tip: Modals often create a backdrop that intercepts clicks." position="right">
+          <button 
+            id="open-modal-btn"
+            onClick={() => setModalOpen(true)}
+            className="bg-gradient-to-r from-rose-600 to-indigo-700 text-white px-10 py-5 rounded-[1.5rem] font-black uppercase text-xs tracking-widest shadow-2xl hover:scale-105 transition-all shadow-rose-950/20"
+          >
+            Inject Practice Modal
+          </button>
+        </Tooltip>
 
         {modalOpen && (
           <div id="modal-overlay" className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[100] flex items-center justify-center p-6 animate-fadeIn">
@@ -42,9 +45,11 @@ const AdvancedFeatures: React.FC = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 via-fuchsia-500 to-indigo-500"></div>
               <div className="flex justify-between items-center mb-10">
                 <h4 className="text-3xl font-black text-white tracking-tight">SYSTEM GATE</h4>
-                <button onClick={() => setModalOpen(false)} id="close-modal" className="text-slate-600 hover:text-white transition-colors p-2">
-                  <i className="fa-solid fa-xmark text-2xl"></i>
-                </button>
+                <Tooltip content="Close modal to return focus to main page." position="left">
+                  <button onClick={() => setModalOpen(false)} id="close-modal" className="text-slate-600 hover:text-white transition-colors p-2">
+                    <i className="fa-solid fa-xmark text-2xl"></i>
+                  </button>
+                </Tooltip>
               </div>
               <p className="text-slate-400 mb-12 font-medium leading-relaxed text-lg">
                 This modal represents a dynamic DOM layer. Your script must target the confirm action within this isolated scope.
@@ -74,13 +79,15 @@ const AdvancedFeatures: React.FC = () => {
         <h3 className="text-2xl font-black mb-6 text-white uppercase tracking-tight">2. Transient Signals</h3>
         <p className="text-slate-400 mb-10 font-medium leading-relaxed max-w-2xl">Catch and verify text within ephemeral toast notifications before they are purged from the DOM.</p>
         
-        <button 
-          id="trigger-toast-btn"
-          onClick={triggerAlert}
-          className="border-2 border-fuchsia-600 text-fuchsia-500 px-10 py-5 rounded-[1.5rem] font-black uppercase text-xs tracking-widest hover:bg-fuchsia-500/10 transition-all shadow-[0_0_20px_rgba(217,70,239,0.1)]"
-        >
-          Emit Toast Signal
-        </button>
+        <Tooltip content="Toasts are fleeting. Practice waiting for text presence." position="right">
+          <button 
+            id="trigger-toast-btn"
+            onClick={triggerAlert}
+            className="border-2 border-fuchsia-600 text-fuchsia-500 px-10 py-5 rounded-[1.5rem] font-black uppercase text-xs tracking-widest hover:bg-fuchsia-500/10 transition-all shadow-[0_0_20px_rgba(217,70,239,0.1)]"
+          >
+            Emit Toast Signal
+          </button>
+        </Tooltip>
 
         {alertVisible && (
           <div id="toast-notification" className="mt-10 p-6 bg-slate-950 text-white rounded-[1.5rem] shadow-[0_0_50px_rgba(168,85,247,0.3)] flex items-center gap-6 animate-slideInRight max-w-md border border-fuchsia-500/30">
@@ -100,23 +107,25 @@ const AdvancedFeatures: React.FC = () => {
         <h3 className="text-2xl font-black mb-6 text-white uppercase tracking-tight">3. Nested Hierarchy</h3>
         <p className="text-slate-400 mb-10 font-medium leading-relaxed max-w-2xl">Shadow DOM or deep nesting requires traversing specific root elements. Locate the deep-layer button.</p>
         
-        <div id="shadow-root-simulator" className="p-10 bg-slate-950 rounded-[2.5rem] border border-white/5 overflow-hidden relative shadow-inner">
-          <div className="ml-6 pl-6 border-l-2 border-slate-800">
-             <div className="text-[9px] font-black text-slate-700 mb-4 tracking-[0.4em] uppercase">#shadow-root (open)</div>
-             <div className="ml-6 pl-6 border-l-2 border-slate-800">
-               <div className="text-[9px] font-black text-slate-700 mb-4 tracking-[0.4em] uppercase">.internal-node</div>
+        <Tooltip content="Automation Hint: getShadowRoot() is required for real shadow DOM." position="top">
+          <div id="shadow-root-simulator" className="p-10 bg-slate-950 rounded-[2.5rem] border border-white/5 overflow-hidden relative shadow-inner">
+            <div className="ml-6 pl-6 border-l-2 border-slate-800">
+               <div className="text-[9px] font-black text-slate-700 mb-4 tracking-[0.4em] uppercase">#shadow-root (open)</div>
                <div className="ml-6 pl-6 border-l-2 border-slate-800">
-                 <button 
-                  id="target-nested-button"
-                  className="bg-slate-900 text-white px-8 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all border border-white/5"
-                  onClick={() => alert('DEEP LAYER ACCESSED')}
-                 >
-                   Deep Node Access
-                 </button>
+                 <div className="text-[9px] font-black text-slate-700 mb-4 tracking-[0.4em] uppercase">.internal-node</div>
+                 <div className="ml-6 pl-6 border-l-2 border-slate-800">
+                   <button 
+                    id="target-nested-button"
+                    className="bg-slate-900 text-white px-8 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all border border-white/5"
+                    onClick={() => alert('DEEP LAYER ACCESSED')}
+                   >
+                     Deep Node Access
+                   </button>
+                 </div>
                </div>
-             </div>
+            </div>
           </div>
-        </div>
+        </Tooltip>
       </section>
     </div>
   );

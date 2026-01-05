@@ -8,8 +8,8 @@ const Dashboard: React.FC = () => {
     { title: 'Dynamic Waits', desc: 'Handle elements that appear after delays or AJAX calls.', icon: 'fa-spinner', color: 'from-orange-500 to-amber-600', shadow: 'shadow-orange-500/20', neon: 'text-orange-400', link: '/dynamic' },
     { title: 'Data Grids', desc: 'Complex tables with sorting, pagination, and dynamic rows.', icon: 'fa-list-check', color: 'from-emerald-500 to-teal-600', shadow: 'shadow-emerald-500/20', neon: 'text-emerald-400', link: '/tables' },
     { title: 'AI Sandbox', desc: 'Challenge yourself with Gemini-generated DOM structures.', icon: 'fa-brain', color: 'from-fuchsia-500 to-purple-600', shadow: 'shadow-fuchsia-500/20', neon: 'text-fuchsia-400', link: '/ai-sandbox' },
+    { title: 'AI Visions', desc: 'Generate futuristic imagery and practice visual locators.', icon: 'fa-wand-magic-sparkles', color: 'from-emerald-400 to-cyan-500', shadow: 'shadow-emerald-500/20', neon: 'text-emerald-400', link: '/ai-visions' },
     { title: 'Advanced DOM', desc: 'iFrames, Shadow DOM, and intercepted Modal interactions.', icon: 'fa-vials', color: 'from-rose-500 to-pink-600', shadow: 'shadow-rose-500/20', neon: 'text-rose-400', link: '/advanced' },
-    { title: 'Alert Protocols', desc: 'Practice catching browser alerts and ephemeral messages.', icon: 'fa-bell', color: 'from-violet-500 to-indigo-600', shadow: 'shadow-violet-500/20', neon: 'text-violet-400', link: '/advanced' },
   ];
 
   return (

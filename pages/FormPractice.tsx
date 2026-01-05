@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import Tooltip from '../components/Tooltip';
 
 const FormPractice: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -37,24 +38,28 @@ const FormPractice: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div className="space-y-3">
                 <label htmlFor="first_name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Identifier_01</label>
-                <input 
-                  type="text" 
-                  id="first_name" 
-                  name="firstName" 
-                  placeholder="Jay"
-                  className="w-full px-6 py-4 rounded-[1.5rem] border-2 border-slate-800 bg-slate-950 text-white placeholder:text-slate-700 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 outline-none transition-all font-bold"
-                  data-testid="firstNameInput"
-                />
+                <Tooltip content="Locator Tip: Use id='first_name' or data-testid for high stability." position="top">
+                  <input 
+                    type="text" 
+                    id="first_name" 
+                    name="firstName" 
+                    placeholder="Jay"
+                    className="w-full px-6 py-4 rounded-[1.5rem] border-2 border-slate-800 bg-slate-950 text-white placeholder:text-slate-700 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 outline-none transition-all font-bold"
+                    data-testid="firstNameInput"
+                  />
+                </Tooltip>
               </div>
               <div className="space-y-3">
                 <label htmlFor="last_name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2">Identifier_02</label>
-                <input 
-                  type="text" 
-                  id="last_name" 
-                  name="lastName" 
-                  placeholder="Automation"
-                  className="w-full px-6 py-4 rounded-[1.5rem] border-2 border-slate-800 bg-slate-950 text-white placeholder:text-slate-700 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 outline-none transition-all font-bold"
-                />
+                <Tooltip content="Practice: Try locating this by name attribute." position="top">
+                  <input 
+                    type="text" 
+                    id="last_name" 
+                    name="lastName" 
+                    placeholder="Automation"
+                    className="w-full px-6 py-4 rounded-[1.5rem] border-2 border-slate-800 bg-slate-950 text-white placeholder:text-slate-700 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 outline-none transition-all font-bold"
+                  />
+                </Tooltip>
               </div>
             </div>
 
@@ -64,9 +69,11 @@ const FormPractice: React.FC = () => {
                 {['Junior', 'Mid', 'Elite'].map((level) => (
                   <label key={level} className="flex-1 min-w-[100px] cursor-pointer group">
                     <input type="radio" name="experience" value={level.toLowerCase()} className="sr-only peer" />
-                    <div className="py-4 rounded-2xl border-2 border-slate-800 bg-slate-950 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-slate-500 group-hover:border-slate-700 text-center font-black uppercase text-[10px] tracking-widest transition-all shadow-inner">
-                      {level}
-                    </div>
+                    <Tooltip content={`Verify state: isSelected() check for ${level}`} position="bottom">
+                      <div className="py-4 rounded-2xl border-2 border-slate-800 bg-slate-950 peer-checked:border-cyan-500 peer-checked:bg-cyan-500/10 peer-checked:text-cyan-400 text-slate-500 group-hover:border-slate-700 text-center font-black uppercase text-[10px] tracking-widest transition-all shadow-inner">
+                        {level}
+                      </div>
+                    </Tooltip>
                   </label>
                 ))}
               </div>
@@ -120,13 +127,15 @@ const FormPractice: React.FC = () => {
             <h4 className="font-black text-slate-400 mb-6 tracking-[0.3em] uppercase text-[10px]">Registry Metrics</h4>
             <div className="space-y-6">
               {[
-                { label: 'Latency', value: '12ms', color: 'text-emerald-400' },
-                { label: 'Security', value: 'Level_04', color: 'text-cyan-400' },
-                { label: 'Encryption', value: 'AES_256', color: 'text-fuchsia-400' }
+                { label: 'Latency', value: '12ms', color: 'text-emerald-400', tip: 'Measured round-trip time.' },
+                { label: 'Security', value: 'Level_04', color: 'text-cyan-400', tip: 'Access control layer.' },
+                { label: 'Encryption', value: 'AES_256', color: 'text-fuchsia-400', tip: 'Data masking protocol.' }
               ].map(stat => (
                 <div key={stat.label} className="flex justify-between items-center pb-4 border-b border-white/5">
                   <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">{stat.label}</span>
-                  <span className={`text-xs font-black uppercase ${stat.color}`}>{stat.value}</span>
+                  <Tooltip content={stat.tip} position="left">
+                    <span className={`text-xs font-black uppercase ${stat.color}`}>{stat.value}</span>
+                  </Tooltip>
                 </div>
               ))}
             </div>

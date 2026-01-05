@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
     { path: '/dynamic', label: 'Dynamic', icon: 'fa-bolt' },
     { path: '/tables', label: 'Tables', icon: 'fa-table' },
     { path: '/ai-sandbox', label: 'AI Sandbox', icon: 'fa-robot' },
+    { path: '/ai-visions', label: 'AI Visions', icon: 'fa-wand-magic-sparkles' },
     { path: '/advanced', label: 'Advanced', icon: 'fa-microchip' },
   ];
 
